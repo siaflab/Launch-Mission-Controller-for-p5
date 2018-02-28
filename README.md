@@ -8,7 +8,7 @@ Please install from the following site.</br>
 Processing:https://processing.org/
 SonicPi:http://sonic-pi.net/
 
-Please import the following libraries before you can use the sample program.</br>
+Before you can use this sample sketch, please import the following libraries in processing</br>
 oscp5:https://github.com/sojamo/oscp5
 texttospeech:http://www.frontiernerds.com/text-to-speech-in-processing
 
