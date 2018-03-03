@@ -15,7 +15,6 @@ Date dateFrom = null;
 
 PImage img;
 
-    
 OscP5 oscP5;
 NetAddress myRemoteLocation;
 
@@ -46,9 +45,8 @@ void oscEvent(OscMessage theOscMessage) {
 }
 
 void setup() {
-  size(600, 600);
-  img = loadImage("img.png");
-  
+   size(600, 600);
+   img = loadImage("img.png");
    cal = Calendar.getInstance(TimeZone.getTimeZone("Asia/Tokyo"));
    DateFormat df = new SimpleDateFormat("YYYY/MM/dd HH:mm:ss　Z");
    df.setTimeZone(cal.getTimeZone());
@@ -62,7 +60,6 @@ void setup() {
    println("MINUTE: " + cal.get(Calendar.MINUTE));
    println("SECOND: " + cal.get(Calendar.SECOND));
    println("MILLISECOND: " + cal.get(Calendar.MILLISECOND));
-
 
   // Read CSV file
   datalines = loadStrings("countdown.csv");
@@ -88,7 +85,7 @@ void setup() {
   }
   print(datalines.length + "row data");
 
-  /* start oscP5, listening for incoming messages at port 4558 */
+  /* start oscP5, listening for incoming messages at port 4556 */
   oscP5 = new OscP5(this,4556);
   /* send messages port*/
   myRemoteLocation = new NetAddress("localhost",4557);
@@ -99,8 +96,8 @@ void setup() {
   message.add("0");
   message.add("0");
   //  message.add("play 60"+"\n");//, rate: 0.4, slow: 4
-  //message.add("load  \"/Users/kei/petal/petal.rb\"" + "\n" + "\n" + "cps(1)" + "\n" + "d1 \'tick(1,2,3)\', n: \"irand 8\", speed: \'-0.2 0.5\'");
-  message.add("load  \"/Users/kei/petal/petal.rb\"" + "\n" + "\n" + "cps(1)" + "\n" + "d1 \'tick\', amp: \'rand 0.4 1\' ,speed: \'1 -0.2\'" + "\n" + "use_synth :hollow" + "\n" + "with_fx :reverb, mix: 0.9 do" + "\n" + "    live_loop :note1 do" + "\n" + "    play choose([:D6,:E6]), attack: 6, release: 6" + "\n" + "    sleep 8" + "\n" + "  end" + "\n" + "    live_loop :note2 do" + "\n" + "    play choose([:Fs6,:G6]), attack: 4, release: 5" + "\n" + "    sleep 10" + "\n" + "  end" + "\n" + "  " + "\n" + "  live_loop :note3 do" + "\n" + "    play choose([:A6, :Cs7]), attack: 5, release: 5" + "\n" + "    sleep 11" + "\n" + "  end" + "\n" + "  " + "\n" + "end");
+  //message.add("load  \"/Users/XXX/petal/petal.rb\"" + "\n" + "\n" + "cps(1)" + "\n" + "d1 \'tick(1,2,3)\', n: \"irand 8\", speed: \'-0.2 0.5\'");
+  message.add("load  \"/Users/XXX/petal/petal.rb\"" + "\n" + "\n" + "cps(1)" + "\n" + "d1 \'tick\', amp: \'rand 0.4 1\' ,speed: \'1 -0.2\'" + "\n" + "use_synth :hollow" + "\n" + "with_fx :reverb, mix: 0.9 do" + "\n" + "    live_loop :note1 do" + "\n" + "    play choose([:D6,:E6]), attack: 6, release: 6" + "\n" + "    sleep 8" + "\n" + "  end" + "\n" + "    live_loop :note2 do" + "\n" + "    play choose([:Fs6,:G6]), attack: 4, release: 5" + "\n" + "    sleep 10" + "\n" + "  end" + "\n" + "  " + "\n" + "  live_loop :note3 do" + "\n" + "    play choose([:A6, :Cs7]), attack: 5, release: 5" + "\n" + "    sleep 11" + "\n" + "  end" + "\n" + "  " + "\n" + "end");
   message.add("0");
   /* send the message */
   oscP5.send(message, myRemoteLocation);
