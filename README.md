@@ -16,3 +16,4 @@ You need to import the following libraries to run this sketch:
 - [oscp5](https://github.com/sojamo/oscp5)
 - [texttospeech in processing](http://www.frontiernerds.com/text-to-speech-in-processing)
 
+You need to move the tick folder under "petal/Dirt-Samples/".
