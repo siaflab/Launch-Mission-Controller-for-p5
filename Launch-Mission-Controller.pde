@@ -23,20 +23,19 @@ String script = "Start monitoring the time event.";
 int voiceIndex;
 int voiceSpeed;
 
-// カンマ区切りテキストファイルの読み込み
-// 最大行列数定義
+// Maximum number of matrices for CSV
 int MAX_LINE = 512;
 int MAX_CUE = 7;
 
-// 行データ格納文字列
+// Line data storage
 String[] datalines;
 
-// データ配列（※0行0列からスタート）
+// Data array (Starting from Row 0 Column 0)
 String[][] data = new String[MAX_LINE][MAX_CUE];
 
 int m_cnt;
 
-String remainingtime,lounchtime;
+String remainingtime, lounchtime;
 
 /* incoming osc message are forwarded to the oscEvent method. */
 void oscEvent(OscMessage theOscMessage) {
@@ -65,29 +64,29 @@ void setup() {
    println("MILLISECOND: " + cal.get(Calendar.MILLISECOND));
 
 
-  // ファイル読み込み
+  // Read CSV file
   datalines = loadStrings("countdown.csv");
 
-  // ファイルが開けた場合
+  // if the file can be opened
   if(datalines != null) {
   for(int i = 0; i < datalines.length; i ++){
-    // 空白行でないかを確認
+    // Check whether it is a blank
     if(datalines[i].length() != 0) {
-      // 一行読み取ってカンマ区切りで格納
+      // Read one line and store it as a comma delimited
       String[] values = datalines[i].split("," , -1);
-      // 列の数だけ読み取り
+      // Read all of columns
       for(int j = 0; j < MAX_CUE; j ++) {
         if(values[j] != null && values[j].length() != 0) {
           data[i][j] = values[j];
-            // コンソール表示用
+            // For console
             print(data[i][j] + "\t");
         }
       }
-      // コンソール表示用
+      // For console
       print("\n");
     }
   }
-  print(datalines.length + "行のデータでした");
+  print(datalines.length + "row data");
 
   /* start oscP5, listening for incoming messages at port 4558 */
   oscP5 = new OscP5(this,4556);
@@ -178,7 +177,7 @@ void draw() {
   text("next event      ：" + missiontime, 10, 200);
   text("task                ：" + m_cnt + " /" + data[m_cnt][6], 10, 220);
 
-    // 日付を作成します。
+    // Create a date
     try {
         cal = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
         df.setTimeZone(cal.getTimeZone());
@@ -188,7 +187,7 @@ void draw() {
         e.printStackTrace();
     }
   
-    //// 日付をlong値に変換します。
+    //// Converts a date to a long value
     //long dateTimeTo = dateTo.getTime();
     //long dateTimeFrom = dateFrom.getTime();
     //long one_date_time = 2646*1000000;
@@ -198,17 +197,17 @@ void draw() {
 
 
     long millis1 = cal.getTimeInMillis();
-    //System.out.println("エポックからの経過ミリ秒の値は" + millis1 + "です");
+    //System.out.println("millis1 + "msec elapsed");
 
     Calendar cal2 = Calendar.getInstance();
 
     cal2.clear();
     cal2.set(int(data[m_cnt][0]), int(data[m_cnt][1]), int(data[m_cnt][2]), int(data[m_cnt][3]), int(data[m_cnt][4]), int(data[m_cnt][5]));
     long millis2 = cal2.getTimeInMillis();
-    //System.out.println("エポックからの経過ミリ秒の値は" + millis2 + "です");
+    //System.out.println(millis2 + "msec elapsed");
 
     long diff = millis2 - millis1;
-    //System.out.println("日時の差は" + diff  + "ミリ秒です");
+    //System.out.println("The time difference is" + diff  + "msec");
 
     diff = diff / 1000;    /* 秒以下切捨て */
     diff++;
@@ -235,10 +234,10 @@ void draw() {
     cal3.clear();
     cal3.set(int(data[datalines.length-1][0]), int(data[datalines.length-1][1]), int(data[datalines.length-1][2]), int(data[datalines.length-1][3]), int(data[datalines.length-1][4]), int(data[datalines.length-1][5]));
     long millis3 = cal3.getTimeInMillis();
-    //System.out.println("エポックからの経過ミリ秒の値は" + millis3 + "です");
+    //System.out.println("millis3 + "msec elapsed");
 
     long diff2 = millis3 - millis1;
-    //System.out.println("日時の差は" + diff2  + "ミリ秒です");
+    //System.out.println("The time difference is" + diff2  + "msec");
 
     diff2 = diff2 / 1000;    /* 秒以下切捨て */
     diff2++;
@@ -283,7 +282,7 @@ static class TextToSpeech extends Object {
   static final String AGNES = "Agnes";
   static final String KATHY = "Kathy";
   static final String PRINCESS = "Princess";
-  static final String VICKI = "Vicki";  //ベッキー
+  static final String VICKI = "Vicki";  //●
   static final String VICTORIA = "Victoria";
  
   // novelty voices
