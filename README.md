@@ -2,11 +2,12 @@
 
 Launch-Mission-Controller is sample program that manages countdown for launch event of high altitude balloon while playing music with SonicPi. By writing a time stamp in the CSV file, it will automatically read the mission at instructed time by speech synthesis. This program supports OSC to communicate with SonicPi, so oscp5 and texttospeech library are required.
 
-Please install from the following site.</br>
+DEPENDENCIES
+You need to install the following software:
 Processing:https://processing.org/</br>
 SonicPi:http://sonic-pi.net/
 
-Before you can use this sample sketch, please import the following libraries in processing</br>
+You need to import the following libraries to build this program:
 oscp5:https://github.com/sojamo/oscp5</br>
 texttospeech:http://www.frontiernerds.com/text-to-speech-in-processing
 
