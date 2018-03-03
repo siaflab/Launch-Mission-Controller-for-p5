@@ -10,7 +10,7 @@ You need to install the following software:
 - [Processing](https://processing.org/)
 - [SonicPi](http://sonic-pi.net/)
 
-You need to import the following libraries to build this program:
+You need to import the following libraries to run this sketch:
 
 - [oscp5](https://github.com/sojamo/oscp5)
 - [texttospeech in processing](http://www.frontiernerds.com/text-to-speech-in-processing)
