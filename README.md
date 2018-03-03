@@ -10,10 +10,10 @@ You need to install the following software:
 - [Processing](https://processing.org/)
 - [SonicPi](http://sonic-pi.net/)
 - [Petal](https://github.com/siaflab/petal)
-
+  You need to move the tick folder under "petal/Dirt-Samples/".
+  
 You need to import the following libraries to run this sketch:
 
 - [oscp5](https://github.com/sojamo/oscp5)
 - [texttospeech in processing](http://www.frontiernerds.com/text-to-speech-in-processing)
 
-You need to move the tick folder under "petal/Dirt-Samples/".
